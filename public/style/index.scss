@@ -1,0 +1,86 @@
+$mobile-width: 375px;
+
+$primary-colors : (
+  moderate-blue: hsl(238, 40%, 52%),
+  soft-red: hsl(358, 79%, 66%),
+  light-grayish blue: hsl(239, 57%, 85%),
+  pale-red: hsl(357, 100%, 86%)
+);
+
+$neutral-colors : (
+  dark-blue: hsl(212, 24%, 26%),
+  grayish-blue: hsl(211, 10%, 45%),
+  light-gray: hsl(223, 19%, 93%),
+  very-light-gray: hsl(228, 33%, 97%),
+  white: hsl(0, 0%, 100%) 
+);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: map-get($neutral-colors, light-gray);
+  main {
+    width: 90%;
+    margin: 40px auto;
+    .comment {
+      width: 100%;
+      background-color: map-get($neutral-colors, white);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 15px;
+      .header {
+        padding-bottom: 20px;
+        display: grid;
+        grid-template-columns: 20% 30% 50%;
+        .avatar {
+          width: 50px;
+        }
+        .username {
+          font-weight: 600;
+          padding-top: 15px;
+        }
+        .createdAt {
+          padding-top: 15px;
+          color: map-get($neutral-colors, grayish-blue);
+        }
+      }
+      .body {
+        color: map-get($neutral-colors, grayish-blue);
+        margin-bottom: 20px;
+      }
+      .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .voting {
+          margin-left: 10px;
+          background-color: map-get($map: $neutral-colors, $key: light-gray);
+          padding: 10px 0;
+          border-radius: 10px;
+          * {
+            padding: 0 5px;
+          }
+          .up-vote, .down-vote {
+            border: none;
+          }
+          .vote-number {
+            font-weight: 600;
+            color: map-get($map: $primary-colors, $key: moderate-blue);
+          }
+        }
+        .reply {
+          @extend .voting;
+          margin-right: 10px;
+          border: none;
+          background-color: map-get($map: $neutral-colors, $key: white);
+          font-weight: 600;
+          color: map-get($map: $primary-colors, $key: moderate-blue);
+        }
+      }
+    }
+  }
+}
