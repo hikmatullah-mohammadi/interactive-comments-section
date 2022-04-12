@@ -75,6 +75,7 @@ body main .comment .footer .voting *, body main .comment .footer .reply * {
 
 body main .comment .footer .voting .up-vote, body main .comment .footer .reply .up-vote, body main .comment .footer .voting .down-vote, body main .comment .footer .reply .down-vote {
   border: none;
+  background-color: #eaecf1;
 }
 
 body main .comment .footer .voting .vote-number, body main .comment .footer .reply .vote-number {
@@ -88,5 +89,50 @@ body main .comment .footer .reply {
   background-color: white;
   font-weight: 600;
   color: #5457b6;
+}
+
+body main .add-comment {
+  width: 100%;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+body main .add-comment textarea {
+  width: 100%;
+  resize: none;
+  height: 120px;
+  outline: none;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: 600;
+  border-color: #67727e;
+}
+
+body main .add-comment div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 20px;
+}
+
+body main .add-comment div .avatar {
+  width: 50px;
+}
+
+body main .add-comment div .btn-send-comment {
+  padding: 15px 25px;
+  background-color: #5457b6;
+  color: white;
+  border-radius: 10px;
+  border: none;
 }
 /*# sourceMappingURL=index.css.map */
