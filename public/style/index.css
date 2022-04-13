@@ -14,42 +14,41 @@ body main {
   margin: 40px auto;
 }
 
-body main .comment {
-  width: 100%;
+body main .comment .comment-main, body main .comment .comment-replies .comment-reply {
   background-color: white;
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
 }
 
-body main .comment .header {
+body main .comment .comment-main .header, body main .comment .comment-replies .comment-reply .header {
   padding-bottom: 20px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20% 30% 50%;
-      grid-template-columns: 20% 30% 50%;
+  -ms-grid-columns: 15% 30% 55%;
+      grid-template-columns: 15% 30% 55%;
 }
 
-body main .comment .header .avatar {
+body main .comment .comment-main .header .avatar, body main .comment .comment-replies .comment-reply .header .avatar {
   width: 50px;
 }
 
-body main .comment .header .username {
+body main .comment .comment-main .header .username, body main .comment .comment-replies .comment-reply .header .username {
   font-weight: 600;
   padding-top: 15px;
 }
 
-body main .comment .header .createdAt {
+body main .comment .comment-main .header .createdAt, body main .comment .comment-replies .comment-reply .header .createdAt {
   padding-top: 15px;
   color: #67727e;
 }
 
-body main .comment .body {
+body main .comment .comment-main .body, body main .comment .comment-replies .comment-reply .body {
   color: #67727e;
   margin-bottom: 20px;
 }
 
-body main .comment .footer {
+body main .comment .comment-main .footer, body main .comment .comment-replies .comment-reply .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,33 +61,55 @@ body main .comment .footer {
           justify-content: space-between;
 }
 
-body main .comment .footer .voting, body main .comment .footer .reply {
+body main .comment .comment-main .footer .voting, body main .comment .comment-replies .comment-reply .footer .voting, body main .comment .comment-main .footer .reply, body main .comment .comment-replies .comment-reply .footer .reply {
   margin-left: 10px;
   background-color: #eaecf1;
   padding: 10px 0;
   border-radius: 10px;
 }
 
-body main .comment .footer .voting *, body main .comment .footer .reply * {
+body main .comment .comment-main .footer .voting *, body main .comment .comment-replies .comment-reply .footer .voting *, body main .comment .comment-main .footer .reply *, body main .comment .comment-replies .comment-reply .footer .reply * {
   padding: 0 5px;
 }
 
-body main .comment .footer .voting .up-vote, body main .comment .footer .reply .up-vote, body main .comment .footer .voting .down-vote, body main .comment .footer .reply .down-vote {
+body main .comment .comment-main .footer .voting .up-vote, body main .comment .comment-replies .comment-reply .footer .voting .up-vote, body main .comment .comment-main .footer .reply .up-vote, body main .comment .comment-replies .comment-reply .footer .reply .up-vote, body main .comment .comment-main .footer .voting .down-vote, body main .comment .comment-replies .comment-reply .footer .voting .down-vote, body main .comment .comment-main .footer .reply .down-vote, body main .comment .comment-replies .comment-reply .footer .reply .down-vote {
   border: none;
   background-color: #eaecf1;
 }
 
-body main .comment .footer .voting .vote-number, body main .comment .footer .reply .vote-number {
+body main .comment .comment-main .footer .voting .vote-number, body main .comment .comment-replies .comment-reply .footer .voting .vote-number, body main .comment .comment-main .footer .reply .vote-number, body main .comment .comment-replies .comment-reply .footer .reply .vote-number {
   font-weight: 600;
   color: #5457b6;
 }
 
-body main .comment .footer .reply {
+body main .comment .comment-main .footer .reply, body main .comment .comment-replies .comment-reply .footer .reply {
   margin-right: 10px;
   border: none;
   background-color: white;
   font-weight: 600;
   color: #5457b6;
+}
+
+body main .comment .comment-replies {
+  border-left: solid 2px #c3c4ef;
+}
+
+body main .comment .comment-replies .comment-reply {
+  width: 95%;
+  margin-left: 5%;
+}
+
+body main .comment .comment-replies .comment-reply .header .avatar {
+  width: 40px;
+}
+
+body main .comment .comment-replies .comment-reply .header .username, body main .comment .comment-replies .comment-reply .header .createdAt {
+  padding-top: 8px;
+}
+
+body main .comment .comment-replies .comment-reply .body .replying-to {
+  color: #5457b6;
+  font-weight: 600;
 }
 
 body main .add-comment {
