@@ -15,14 +15,14 @@ body main {
   margin: 40px auto;
 }
 
-body main .comment .comment-main, body main .comment .comment-replies .comment-reply {
+body main .comments .comment .comment-main, body main .comments .comment .comment-replies .comment-reply {
   background-color: white;
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
 }
 
-body main .comment .comment-main .header, body main .comment .comment-replies .comment-reply .header {
+body main .comments .comment .comment-main .header, body main .comments .comment .comment-replies .comment-reply .header {
   padding-bottom: 20px;
   display: -ms-grid;
   display: grid;
@@ -30,33 +30,33 @@ body main .comment .comment-main .header, body main .comment .comment-replies .c
       grid-template-columns: 20% 50% 30%;
 }
 
-body main .comment .comment-main .header .avatar, body main .comment .comment-replies .comment-reply .header .avatar {
+body main .comments .comment .comment-main .header .avatar, body main .comments .comment .comment-replies .comment-reply .header .avatar {
   width: 50px;
 }
 
-body main .comment .comment-main .header .username, body main .comment .comment-replies .comment-reply .header .username {
+body main .comments .comment .comment-main .header .username, body main .comments .comment .comment-replies .comment-reply .header .username {
   font-weight: 600;
   padding-top: 15px;
 }
 
-body main .comment .comment-main .header .username .current-user-indicator, body main .comment .comment-replies .comment-reply .header .username .current-user-indicator {
+body main .comments .comment .comment-main .header .username .current-user-indicator, body main .comments .comment .comment-replies .comment-reply .header .username .current-user-indicator {
   padding: 2px 7px 6px 7px;
   border-radius: 5px;
   color: white;
   background-color: #5457b6;
 }
 
-body main .comment .comment-main .header .createdAt, body main .comment .comment-replies .comment-reply .header .createdAt {
+body main .comments .comment .comment-main .header .createdAt, body main .comments .comment .comment-replies .comment-reply .header .createdAt {
   padding-top: 15px;
   color: #67727e;
 }
 
-body main .comment .comment-main .body, body main .comment .comment-replies .comment-reply .body {
+body main .comments .comment .comment-main .body, body main .comments .comment .comment-replies .comment-reply .body {
   color: #67727e;
   margin-bottom: 20px;
 }
 
-body main .comment .comment-main .footer, body main .comment .comment-replies .comment-reply .footer {
+body main .comments .comment .comment-main .footer, body main .comments .comment .comment-replies .comment-reply .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,80 +69,133 @@ body main .comment .comment-main .footer, body main .comment .comment-replies .c
           justify-content: space-between;
 }
 
-body main .comment .comment-main .footer .voting, body main .comment .comment-replies .comment-reply .footer .voting, body main .comment .comment-main .footer .reply, body main .comment .comment-replies .comment-reply .footer .reply {
+body main .comments .comment .comment-main .footer .voting, body main .comments .comment .comment-replies .comment-reply .footer .voting, body main .comments .comment .comment-main .footer .reply, body main .comments .comment .comment-replies .comment-reply .footer .reply {
   background-color: #eaecf1;
   padding: 10px 0;
   border-radius: 10px;
 }
 
-body main .comment .comment-main .footer .voting *, body main .comment .comment-replies .comment-reply .footer .voting *, body main .comment .comment-main .footer .reply *, body main .comment .comment-replies .comment-reply .footer .reply * {
+body main .comments .comment .comment-main .footer .voting *, body main .comments .comment .comment-replies .comment-reply .footer .voting *, body main .comments .comment .comment-main .footer .reply *, body main .comments .comment .comment-replies .comment-reply .footer .reply * {
   padding: 0 5px;
 }
 
-body main .comment .comment-main .footer .voting .up-vote, body main .comment .comment-replies .comment-reply .footer .voting .up-vote, body main .comment .comment-main .footer .reply .up-vote, body main .comment .comment-replies .comment-reply .footer .reply .up-vote, body main .comment .comment-main .footer .voting .down-vote, body main .comment .comment-replies .comment-reply .footer .voting .down-vote, body main .comment .comment-main .footer .reply .down-vote, body main .comment .comment-replies .comment-reply .footer .reply .down-vote {
+body main .comments .comment .comment-main .footer .voting .up-vote, body main .comments .comment .comment-replies .comment-reply .footer .voting .up-vote, body main .comments .comment .comment-main .footer .reply .up-vote, body main .comments .comment .comment-replies .comment-reply .footer .reply .up-vote, body main .comments .comment .comment-main .footer .voting .down-vote, body main .comments .comment .comment-replies .comment-reply .footer .voting .down-vote, body main .comments .comment .comment-main .footer .reply .down-vote, body main .comments .comment .comment-replies .comment-reply .footer .reply .down-vote {
   border: none;
   background-color: #eaecf1;
 }
 
-body main .comment .comment-main .footer .voting .vote-number, body main .comment .comment-replies .comment-reply .footer .voting .vote-number, body main .comment .comment-main .footer .reply .vote-number, body main .comment .comment-replies .comment-reply .footer .reply .vote-number {
+body main .comments .comment .comment-main .footer .voting .vote-number, body main .comments .comment .comment-replies .comment-reply .footer .voting .vote-number, body main .comments .comment .comment-main .footer .reply .vote-number, body main .comments .comment .comment-replies .comment-reply .footer .reply .vote-number {
   font-weight: 600;
   color: #5457b6;
 }
 
-body main .comment .comment-main .footer .reply, body main .comment .comment-replies .comment-reply .footer .reply {
-  margin-right: 10px;
+body main .comments .comment .comment-main .footer .reply, body main .comments .comment .comment-replies .comment-reply .footer .reply {
   border: none;
-  background-color: inherit;
-  font-weight: 600;
-  color: #5457b6;
-}
-
-body main .comment .comment-main .footer .edit-delete-comment .btn-delete, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete, body main .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
-  border: none;
-  background-color: inherit;
   padding: 15px;
   font-weight: 600;
   border-radius: 10px;
+  background-color: inherit;
+  color: #5457b6;
+}
+
+body main .comments .comment .comment-main .footer .edit-delete-comment .btn-delete, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete, body main .comments .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
+  border: none;
+  padding: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: inherit;
   color: #ed6468;
 }
 
-body main .comment .comment-main .footer .edit-delete-comment .btn-delete img, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete img, body main .comment .comment-main .footer .edit-delete-comment .btn-edit img, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit img {
+body main .comments .comment .comment-main .footer .edit-delete-comment .btn-delete img, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete img, body main .comments .comment .comment-main .footer .edit-delete-comment .btn-edit img, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit img {
   border-radius: 0;
   padding: 0;
 }
 
-body main .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
+body main .comments .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
   color: #5457b6;
 }
 
-body main .comment .comment-replies {
+body main .comments .comment .comment-replies {
   border-left: solid 2px #c3c4ef;
 }
 
-body main .comment .comment-replies .comment-reply {
+body main .comments .comment .comment-replies .comment-reply {
   width: 95%;
   margin-left: 5%;
 }
 
-body main .comment .comment-replies .comment-reply .header .avatar {
+body main .comments .comment .comment-replies .comment-reply .header .avatar {
   width: 40px;
 }
 
-body main .comment .comment-replies .comment-reply .header .username, body main .comment .comment-replies .comment-reply .header .createdAt {
+body main .comments .comment .comment-replies .comment-reply .header .username, body main .comments .comment .comment-replies .comment-reply .header .createdAt {
   padding-top: 8px;
 }
 
-body main .comment .comment-replies .comment-reply .body .replying-to {
+body main .comments .comment .comment-replies .comment-reply .body .replying-to {
   color: #5457b6;
   font-weight: 600;
 }
 
-body main .add-comment {
-  width: 100%;
+body main .delete-alert {
   background-color: white;
-  border-radius: 15px;
   padding: 20px;
   margin: 20px auto;
+  border-radius: 15px;
+  position: fixed;
+  top: 300px;
+  z-index: 2;
+  left: 5%;
+  width: 90%;
+  display: none;
+}
+
+body main .delete-alert .title {
+  font-weight: 600;
+  margin: 10px auto;
+}
+
+body main .delete-alert .message {
+  color: #67727e;
+  margin-bottom: 20px;
+}
+
+body main .delete-alert .response {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body main .delete-alert .response button {
+  border: none;
+  padding: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: inherit;
+  color: white;
+}
+
+body main .delete-alert .response button:first-child {
+  background-color: #67727e;
+}
+
+body main .delete-alert .response button:last-child {
+  background-color: #ed6468;
+}
+
+body main .add-comment {
+  background-color: white;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 15px;
 }
 
 body main .add-comment textarea {
@@ -174,11 +227,13 @@ body main .add-comment div .avatar {
 }
 
 body main .add-comment div .btn-send-comment {
-  padding: 15px 25px;
+  border: none;
+  padding: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: inherit;
+  padding: 10px 25px;
   background-color: #5457b6;
   color: white;
-  border-radius: 10px;
-  font-weight: 600;
-  border: none;
 }
 /*# sourceMappingURL=index.css.map */

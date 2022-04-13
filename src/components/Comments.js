@@ -36,7 +36,7 @@ const Comments = () => {
     </div>
   ));
   return (
-    <div className="Comments">
+    <div className="comments">
       { comments }
     </div>
   );
