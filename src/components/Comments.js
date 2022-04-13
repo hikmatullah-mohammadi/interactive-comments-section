@@ -7,7 +7,9 @@ const Comments = () => {
       <section className='comment-main'>
         <section className="header">
           <img className="avatar" alt="" src={comment.user.image.png}/>
-          <p className="username">{comment.user.username}</p>
+          <p className="username">{comment.user.username} {" "}
+            {comment.user.username === 'juliusomo' && <span className='current-user-indicator'>you</span>}
+          </p>
           <p className="createdAt">{comment.createdAt}</p>
         </section>
         <section className="body">
@@ -19,7 +21,15 @@ const Comments = () => {
             <span className='vote-number'>{comment.score}</span>
             <button className='down-vote'><img src="./images/icon-minus.svg" alt="-"/></button>
           </div>
-          <button className="reply"><img src="./images/icon-reply.svg" alt=""/>Reply</button>
+          {
+            comment.user.username === 'juliusomo' ?
+              <div className='edit-delete-comment'>
+                <button className="btn-delete"><img src='./images/icon-delete.svg' alt=''/> Delete</button>
+                <button className='btn-edit'><img src='./images/icon-edit.svg' alt=''/> Edit</button>
+              </div>
+              :
+              <button className="reply"><img src="./images/icon-reply.svg" alt=""/>Reply</button>
+          }
         </section>
       </section> {/* End of comment-main section */}
       { comment.replies !== [] && <Replies items={comment.replies}/> }

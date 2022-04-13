@@ -3,6 +3,7 @@
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-size: 16px;
 }
 
 body {
@@ -25,8 +26,8 @@ body main .comment .comment-main .header, body main .comment .comment-replies .c
   padding-bottom: 20px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 15% 30% 55%;
-      grid-template-columns: 15% 30% 55%;
+  -ms-grid-columns: 20% 50% 30%;
+      grid-template-columns: 20% 50% 30%;
 }
 
 body main .comment .comment-main .header .avatar, body main .comment .comment-replies .comment-reply .header .avatar {
@@ -36,6 +37,13 @@ body main .comment .comment-main .header .avatar, body main .comment .comment-re
 body main .comment .comment-main .header .username, body main .comment .comment-replies .comment-reply .header .username {
   font-weight: 600;
   padding-top: 15px;
+}
+
+body main .comment .comment-main .header .username .current-user-indicator, body main .comment .comment-replies .comment-reply .header .username .current-user-indicator {
+  padding: 2px 7px 6px 7px;
+  border-radius: 5px;
+  color: white;
+  background-color: #5457b6;
 }
 
 body main .comment .comment-main .header .createdAt, body main .comment .comment-replies .comment-reply .header .createdAt {
@@ -62,7 +70,6 @@ body main .comment .comment-main .footer, body main .comment .comment-replies .c
 }
 
 body main .comment .comment-main .footer .voting, body main .comment .comment-replies .comment-reply .footer .voting, body main .comment .comment-main .footer .reply, body main .comment .comment-replies .comment-reply .footer .reply {
-  margin-left: 10px;
   background-color: #eaecf1;
   padding: 10px 0;
   border-radius: 10px;
@@ -85,8 +92,26 @@ body main .comment .comment-main .footer .voting .vote-number, body main .commen
 body main .comment .comment-main .footer .reply, body main .comment .comment-replies .comment-reply .footer .reply {
   margin-right: 10px;
   border: none;
-  background-color: white;
+  background-color: inherit;
   font-weight: 600;
+  color: #5457b6;
+}
+
+body main .comment .comment-main .footer .edit-delete-comment .btn-delete, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete, body main .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
+  border: none;
+  background-color: inherit;
+  padding: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: #ed6468;
+}
+
+body main .comment .comment-main .footer .edit-delete-comment .btn-delete img, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete img, body main .comment .comment-main .footer .edit-delete-comment .btn-edit img, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit img {
+  border-radius: 0;
+  padding: 0;
+}
+
+body main .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
   color: #5457b6;
 }
 
@@ -122,12 +147,11 @@ body main .add-comment {
 
 body main .add-comment textarea {
   width: 100%;
-  resize: none;
   height: 120px;
+  resize: none;
   outline: none;
   padding: 10px;
   border-radius: 15px;
-  font-weight: 600;
   border-color: #67727e;
 }
 
@@ -154,6 +178,7 @@ body main .add-comment div .btn-send-comment {
   background-color: #5457b6;
   color: white;
   border-radius: 10px;
+  font-weight: 600;
   border: none;
 }
 /*# sourceMappingURL=index.css.map */
