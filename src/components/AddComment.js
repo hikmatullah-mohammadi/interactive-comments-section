@@ -5,10 +5,8 @@ const AddComment = () => {
     <div className='add-comment'>
       <textarea placeholder="Add a comment...">
       </textarea>
-      <div>
-        <img className='avatar' src={data.currentUser.image.png}/>
-        <button className='btn-send-comment'>SEND</button>
-      </div>
+      <img className='avatar' src={data.currentUser.image.png}/>
+      <button className='btn-send-comment'>SEND</button>
     </div>
   )
 }

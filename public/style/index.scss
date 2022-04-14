@@ -23,7 +23,7 @@ $neutral-colors : (
 }
 @mixin button-style {
   border: none;
-  padding: 15px;
+  padding: 10px;
   font-weight: 600;
   border-radius: 10px;
   background-color: inherit;
@@ -44,70 +44,77 @@ body {
     .comments .comment {
       .comment-main { // comment itself regardless its replies
         @include element-style();
-        .header {
-          padding-bottom: 20px;
-          display: grid;
-          grid-template-columns: 20% 50% 30%;
+        display: grid;
+        grid-template-columns: 20% 80%;
+        .content {
+          grid-column: 1/3;
+          margin-bottom: 20px;
           .avatar {
-            width: 50px;
+            width: 32px;
+            float: left;
           }
           .username {
+            display: inline-block;
+            padding-left: 10px;
+            margin-top: 8px;
             font-weight: 600;
-            padding-top: 15px;
             .current-user-indicator {
               padding: 2px 7px 6px 7px;
               border-radius: 5px;
               color: map-get($map: $neutral-colors, $key: white);
               background-color: map-get($map: $primary-colors, $key: moderate-blue);
+              font-size: 0.75rem;
             }
           }
           .createdAt {
-            padding-top: 15px;
+            padding-left: 10px;
+            color: map-get($neutral-colors, grayish-blue);
+          }
+          .body {
+            margin-top: 20px;
             color: map-get($neutral-colors, grayish-blue);
           }
         }
-        .body {
-          color: map-get($neutral-colors, grayish-blue);
-          margin-bottom: 20px;
-        }
-        .footer {
+        .voting {
+          grid-column: 1/2;
+          width: 90px;
+          background-color: map-get($map: $neutral-colors, $key: light-gray);
+          padding: 10px 0;
+          border-radius: 10px;
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
-          .voting {
+          justify-content: space-around;
+          .up-vote, .down-vote {
+            border: none;
             background-color: map-get($map: $neutral-colors, $key: light-gray);
-            padding: 10px 0;
-            border-radius: 10px;
-            * {
-              padding: 0 5px;
-            }
-            .up-vote, .down-vote {
-              border: none;
-              background-color: map-get($map: $neutral-colors, $key: light-gray);
-            }
-            .vote-number {
-              font-weight: 600;
-              color: map-get($map: $primary-colors, $key: moderate-blue);
-            }
           }
-          .reply {
-            @extend .voting;
-            @include button-style();
+          .vote-number {
+            font-weight: 600;
             color: map-get($map: $primary-colors, $key: moderate-blue);
           }
-          .edit-delete-comment {
-            .btn-delete {
-              @include button-style();
-              color: map-get($map: $primary-colors, $key: soft-red);
-              img {
-                border-radius: 0;
-                padding: 0;
-              }
+        }
+        .reply {
+          @extend .voting;
+          @include button-style();
+          grid-column: 2/3;
+          place-self: end;
+          color: map-get($map: $primary-colors, $key: moderate-blue);
+        }
+        .edit-delete-comment {
+          grid-column: 2/3;
+          place-self: end;
+          .btn-delete {
+            @include button-style();
+            padding: 10px 2px;
+            color: map-get($map: $primary-colors, $key: soft-red);
+            img {
+              border-radius: 0;
+              padding: 0;
             }
-            .btn-edit {
-              @extend .btn-delete;
-              color: map-get($map: $primary-colors, $key: moderate-blue);
-            }
+          }
+          .btn-edit {
+            @extend .btn-delete;
+            color: map-get($map: $primary-colors, $key: moderate-blue);
           }
         }
       }
@@ -117,14 +124,6 @@ body {
           width: 95%;
           margin-left: 5%;
           @extend .comment-main;
-          .header {
-            .avatar {
-              width: 40px;
-            }
-            .username, .createdAt {
-              padding-top: 8px;
-            }
-          }
           .body .replying-to {
               color: map-get($map: $primary-colors, $key: moderate-blue);
               font-weight: 600;
@@ -133,66 +132,153 @@ body {
       }
     }
     .delete-alert {
-      @include element-style();
-      position: fixed;
-      top: 300px;
-      z-index: 2;
-      left: 5%;
-      width: 90%;
-      display: none;
-
-      .title {
-        font-weight: 600;
-        margin: 10px auto;
-      }
-      .message {
-        color: map-get($map: $neutral-colors, $key: grayish-blue);
-        margin-bottom: 20px;
-      }
-      .response {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        button {
-          @include button-style();
-          color: map-get($map: $neutral-colors, $key: white);
-          &:first-child {
-            background-color: map-get($map: $neutral-colors, $key: grayish-blue);
+      .bg-alert {
+        position: fixed;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.445);
+        inset: 0;
+        display: none;
+        div {
+          @include element-style();
+          width: 90%;
+          margin-top: 300px;
+          .title {
+            font-weight: 600;
+            margin: 15px auto;
           }
-          &:last-child {
-            background-color: map-get($map: $primary-colors, $key: soft-red);
+          .message {
+            color: map-get($map: $neutral-colors, $key: grayish-blue);
+            margin-bottom: 25px;
+          }
+          .response {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            button {
+              @include button-style();
+              padding: 15px 20px;
+              color: map-get($map: $neutral-colors, $key: white);
+              &:first-child {
+                background-color: map-get($map: $neutral-colors, $key: grayish-blue);
+              }
+              &:last-child {
+                background-color: map-get($map: $primary-colors, $key: soft-red);
+              }
+            }
           }
         }
       }
     }
     .add-comment {
-      background-color: map-get($neutral-colors, white);
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 15px;
+      @include element-style();
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-row-gap: 20px;
+      margin-top: 20px;
       textarea {
-        width: 100%;
         height: 120px;
         resize: none;
         outline: none;
         padding: 10px;
         border-radius: 15px;
         border-color: map-get($map: $neutral-colors, $key: grayish-blue);
+        grid-column: 1/3;
       }
-      div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+      .avatar {
+        width: 32px;
+        padding: 8px 0; 
+      }
+      .btn-send-comment {
+        @include button-style();
+        width: 100px;
+        place-self: end;
+        background-color: map-get($map: $primary-colors, $key: moderate-blue);
+        color: map-get($map: $neutral-colors, $key: white);
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    main {
+      width: 60%;
+      .comments .comment{
+        .comment-main {
+          grid-template-columns: 5% 50% 45%;
+          column-gap: 10px;
+          .voting {
+            grid-column: 1/2;
+            grid-row: 1/3;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+          }
+          .content {
+            grid-column: 2/4;
+            grid-row: 1/3;
+          }
+          .reply{
+            background-color: transparent;
+            grid-column: 3/4;
+            grid-row: 1/2;
+            flex-direction: row;
+            justify-content: end;
+            img {
+              padding-right: 5px;
+            }
+          }
+          .edit-delete-comment {
+            grid-column: 3/4;
+            grid-row: 1/2;
+            flex-direction: row;
+            justify-content: end;
+            padding: 0;
+            .btn-edit {
+              padding-right: 5px;
+            }
+          }
+        }
+        .comment-replies {
+          width: 95%;
+          margin-left: 5%;
+        }
+      }
+      .add-comment {
         margin-top: 20px;
+        grid-template-columns: 10% 65% 25%;
+        grid-column-gap: 2%;
+        textarea {
+          height: 100px;
+          grid-column: 2/3;
+          grid-row: 1/2;
+        }
         .avatar {
-          width: 50px;
+          grid-column: 1/2;
         }
         .btn-send-comment {
-          @include button-style();
-          padding: 10px 25px;
-          background-color: map-get($map: $primary-colors, $key: moderate-blue);
-          color: map-get($map: $neutral-colors, $key: white);
+          place-self: start;
+          grid-column: 3/4;
         }
+      }
+      .delete-alert {
+        .bg-alert {
+          div {
+            width: 400px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1024px + 1) {
+  body {
+    main {
+      width: 50%;
+      .delete-alert {
+        left: 32.5%;
+        width: 25%;
       }
     }
   }

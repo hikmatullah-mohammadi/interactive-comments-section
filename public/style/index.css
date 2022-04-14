@@ -20,43 +20,57 @@ body main .comments .comment .comment-main, body main .comments .comment .commen
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
-}
-
-body main .comments .comment .comment-main .header, body main .comments .comment .comment-replies .comment-reply .header {
-  padding-bottom: 20px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20% 50% 30%;
-      grid-template-columns: 20% 50% 30%;
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
 }
 
-body main .comments .comment .comment-main .header .avatar, body main .comments .comment .comment-replies .comment-reply .header .avatar {
-  width: 50px;
+body main .comments .comment .comment-main .content, body main .comments .comment .comment-replies .comment-reply .content {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  margin-bottom: 20px;
 }
 
-body main .comments .comment .comment-main .header .username, body main .comments .comment .comment-replies .comment-reply .header .username {
+body main .comments .comment .comment-main .content .avatar, body main .comments .comment .comment-replies .comment-reply .content .avatar {
+  width: 32px;
+  float: left;
+}
+
+body main .comments .comment .comment-main .content .username, body main .comments .comment .comment-replies .comment-reply .content .username {
+  display: inline-block;
+  padding-left: 10px;
+  margin-top: 8px;
   font-weight: 600;
-  padding-top: 15px;
 }
 
-body main .comments .comment .comment-main .header .username .current-user-indicator, body main .comments .comment .comment-replies .comment-reply .header .username .current-user-indicator {
+body main .comments .comment .comment-main .content .username .current-user-indicator, body main .comments .comment .comment-replies .comment-reply .content .username .current-user-indicator {
   padding: 2px 7px 6px 7px;
   border-radius: 5px;
   color: white;
   background-color: #5457b6;
+  font-size: 0.75rem;
 }
 
-body main .comments .comment .comment-main .header .createdAt, body main .comments .comment .comment-replies .comment-reply .header .createdAt {
-  padding-top: 15px;
+body main .comments .comment .comment-main .content .createdAt, body main .comments .comment .comment-replies .comment-reply .content .createdAt {
+  padding-left: 10px;
   color: #67727e;
 }
 
-body main .comments .comment .comment-main .body, body main .comments .comment .comment-replies .comment-reply .body {
+body main .comments .comment .comment-main .content .body, body main .comments .comment .comment-replies .comment-reply .content .body {
+  margin-top: 20px;
   color: #67727e;
-  margin-bottom: 20px;
 }
 
-body main .comments .comment .comment-main .footer, body main .comments .comment .comment-replies .comment-reply .footer {
+body main .comments .comment .comment-main .voting, body main .comments .comment .comment-replies .comment-reply .voting, body main .comments .comment .comment-main .reply, body main .comments .comment .comment-replies .comment-reply .reply {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  width: 90px;
+  background-color: #eaecf1;
+  padding: 10px 0;
+  border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,55 +78,56 @@ body main .comments .comment .comment-main .footer, body main .comments .comment
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-body main .comments .comment .comment-main .footer .voting, body main .comments .comment .comment-replies .comment-reply .footer .voting, body main .comments .comment .comment-main .footer .reply, body main .comments .comment .comment-replies .comment-reply .footer .reply {
-  background-color: #eaecf1;
-  padding: 10px 0;
-  border-radius: 10px;
-}
-
-body main .comments .comment .comment-main .footer .voting *, body main .comments .comment .comment-replies .comment-reply .footer .voting *, body main .comments .comment .comment-main .footer .reply *, body main .comments .comment .comment-replies .comment-reply .footer .reply * {
-  padding: 0 5px;
-}
-
-body main .comments .comment .comment-main .footer .voting .up-vote, body main .comments .comment .comment-replies .comment-reply .footer .voting .up-vote, body main .comments .comment .comment-main .footer .reply .up-vote, body main .comments .comment .comment-replies .comment-reply .footer .reply .up-vote, body main .comments .comment .comment-main .footer .voting .down-vote, body main .comments .comment .comment-replies .comment-reply .footer .voting .down-vote, body main .comments .comment .comment-main .footer .reply .down-vote, body main .comments .comment .comment-replies .comment-reply .footer .reply .down-vote {
+body main .comments .comment .comment-main .voting .up-vote, body main .comments .comment .comment-replies .comment-reply .voting .up-vote, body main .comments .comment .comment-main .reply .up-vote, body main .comments .comment .comment-replies .comment-reply .reply .up-vote, body main .comments .comment .comment-main .voting .down-vote, body main .comments .comment .comment-replies .comment-reply .voting .down-vote, body main .comments .comment .comment-main .reply .down-vote, body main .comments .comment .comment-replies .comment-reply .reply .down-vote {
   border: none;
   background-color: #eaecf1;
 }
 
-body main .comments .comment .comment-main .footer .voting .vote-number, body main .comments .comment .comment-replies .comment-reply .footer .voting .vote-number, body main .comments .comment .comment-main .footer .reply .vote-number, body main .comments .comment .comment-replies .comment-reply .footer .reply .vote-number {
+body main .comments .comment .comment-main .voting .vote-number, body main .comments .comment .comment-replies .comment-reply .voting .vote-number, body main .comments .comment .comment-main .reply .vote-number, body main .comments .comment .comment-replies .comment-reply .reply .vote-number {
   font-weight: 600;
   color: #5457b6;
 }
 
-body main .comments .comment .comment-main .footer .reply, body main .comments .comment .comment-replies .comment-reply .footer .reply {
+body main .comments .comment .comment-main .reply, body main .comments .comment .comment-replies .comment-reply .reply {
   border: none;
-  padding: 15px;
+  padding: 10px;
   font-weight: 600;
   border-radius: 10px;
   background-color: inherit;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  place-self: end;
   color: #5457b6;
 }
 
-body main .comments .comment .comment-main .footer .edit-delete-comment .btn-delete, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete, body main .comments .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
+body main .comments .comment .comment-main .edit-delete-comment, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  place-self: end;
+}
+
+body main .comments .comment .comment-main .edit-delete-comment .btn-delete, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment .btn-delete, body main .comments .comment .comment-main .edit-delete-comment .btn-edit, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment .btn-edit {
   border: none;
-  padding: 15px;
+  padding: 10px;
   font-weight: 600;
   border-radius: 10px;
   background-color: inherit;
+  padding: 10px 2px;
   color: #ed6468;
 }
 
-body main .comments .comment .comment-main .footer .edit-delete-comment .btn-delete img, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-delete img, body main .comments .comment .comment-main .footer .edit-delete-comment .btn-edit img, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit img {
+body main .comments .comment .comment-main .edit-delete-comment .btn-delete img, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment .btn-delete img, body main .comments .comment .comment-main .edit-delete-comment .btn-edit img, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment .btn-edit img {
   border-radius: 0;
   padding: 0;
 }
 
-body main .comments .comment .comment-main .footer .edit-delete-comment .btn-edit, body main .comments .comment .comment-replies .comment-reply .footer .edit-delete-comment .btn-edit {
+body main .comments .comment .comment-main .edit-delete-comment .btn-edit, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment .btn-edit {
   color: #5457b6;
 }
 
@@ -125,43 +140,39 @@ body main .comments .comment .comment-replies .comment-reply {
   margin-left: 5%;
 }
 
-body main .comments .comment .comment-replies .comment-reply .header .avatar {
-  width: 40px;
-}
-
-body main .comments .comment .comment-replies .comment-reply .header .username, body main .comments .comment .comment-replies .comment-reply .header .createdAt {
-  padding-top: 8px;
-}
-
 body main .comments .comment .comment-replies .comment-reply .body .replying-to {
   color: #5457b6;
   font-weight: 600;
 }
 
-body main .delete-alert {
+body main .delete-alert .bg-alert {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.445);
+  inset: 0;
+  display: none;
+}
+
+body main .delete-alert .bg-alert div {
   background-color: white;
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
-  position: fixed;
-  top: 300px;
-  z-index: 2;
-  left: 5%;
   width: 90%;
-  display: none;
+  margin-top: 300px;
 }
 
-body main .delete-alert .title {
+body main .delete-alert .bg-alert div .title {
   font-weight: 600;
-  margin: 10px auto;
+  margin: 15px auto;
 }
 
-body main .delete-alert .message {
+body main .delete-alert .bg-alert div .message {
   color: #67727e;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-body main .delete-alert .response {
+body main .delete-alert .bg-alert div .response {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,20 +185,21 @@ body main .delete-alert .response {
           justify-content: space-between;
 }
 
-body main .delete-alert .response button {
+body main .delete-alert .bg-alert div .response button {
   border: none;
-  padding: 15px;
+  padding: 10px;
   font-weight: 600;
   border-radius: 10px;
   background-color: inherit;
+  padding: 15px 20px;
   color: white;
 }
 
-body main .delete-alert .response button:first-child {
+body main .delete-alert .bg-alert div .response button:first-child {
   background-color: #67727e;
 }
 
-body main .delete-alert .response button:last-child {
+body main .delete-alert .bg-alert div .response button:last-child {
   background-color: #ed6468;
 }
 
@@ -196,44 +208,156 @@ body main .add-comment {
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+  grid-row-gap: 20px;
+  margin-top: 20px;
 }
 
 body main .add-comment textarea {
-  width: 100%;
   height: 120px;
   resize: none;
   outline: none;
   padding: 10px;
   border-radius: 15px;
   border-color: #67727e;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
 }
 
-body main .add-comment div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-top: 20px;
+body main .add-comment .avatar {
+  width: 32px;
+  padding: 8px 0;
 }
 
-body main .add-comment div .avatar {
-  width: 50px;
-}
-
-body main .add-comment div .btn-send-comment {
+body main .add-comment .btn-send-comment {
   border: none;
-  padding: 15px;
+  padding: 10px;
   font-weight: 600;
   border-radius: 10px;
   background-color: inherit;
-  padding: 10px 25px;
+  width: 100px;
+  place-self: end;
   background-color: #5457b6;
   color: white;
+}
+
+@media (min-width: 769px) {
+  body main {
+    width: 60%;
+  }
+  body main .comments .comment .comment-main, body main .comments .comment .comment-replies .comment-reply {
+    -ms-grid-columns: 5% 50% 45%;
+        grid-template-columns: 5% 50% 45%;
+    -webkit-column-gap: 10px;
+            column-gap: 10px;
+  }
+  body main .comments .comment .comment-main .voting, body main .comments .comment .comment-replies .comment-reply .voting, body main .comments .comment .comment-main .reply, body main .comments .comment .comment-replies .comment-reply .reply {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    grid-row: 1/3;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+  }
+  body main .comments .comment .comment-main .content, body main .comments .comment .comment-replies .comment-reply .content {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2/4;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    grid-row: 1/3;
+  }
+  body main .comments .comment .comment-main .reply, body main .comments .comment .comment-replies .comment-reply .reply {
+    background-color: transparent;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-column: 3/4;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+  }
+  body main .comments .comment .comment-main .reply img, body main .comments .comment .comment-replies .comment-reply .reply img {
+    padding-right: 5px;
+  }
+  body main .comments .comment .comment-main .edit-delete-comment, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment {
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-column: 3/4;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+    padding: 0;
+  }
+  body main .comments .comment .comment-main .edit-delete-comment .btn-edit, body main .comments .comment .comment-replies .comment-reply .edit-delete-comment .btn-edit {
+    padding-right: 5px;
+  }
+  body main .comments .comment .comment-replies {
+    width: 95%;
+    margin-left: 5%;
+  }
+  body main .add-comment {
+    margin-top: 20px;
+    -ms-grid-columns: 10% 65% 25%;
+        grid-template-columns: 10% 65% 25%;
+    grid-column-gap: 2%;
+  }
+  body main .add-comment textarea {
+    height: 100px;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+  }
+  body main .add-comment .avatar {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  body main .add-comment .btn-send-comment {
+    place-self: start;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-column: 3/4;
+  }
+  body main .delete-alert .bg-alert div {
+    width: 400px;
+  }
+}
+
+@media (min-width: 1025px) {
+  body main {
+    width: 50%;
+  }
+  body main .delete-alert {
+    left: 32.5%;
+    width: 25%;
+  }
 }
 /*# sourceMappingURL=index.css.map */
