@@ -1,4 +1,5 @@
 import data from "./../data";
+import AddReply from "./AddReply";
 import Replies from "./Replies";
 
 const Comments = () => {
@@ -11,9 +12,10 @@ const Comments = () => {
             {comment.user.username === 'juliusomo' && <span className='current-user-indicator'>you</span>}
           </span>
           <span className="createdAt">{comment.createdAt}</span>
-          <section className="body">
+          <section className="body" contentEditable={true}>
             {comment.content}
           </section>
+          <button className='btn-update-comment'>Update</button>
         </section>
         
         <div className="voting">
@@ -32,6 +34,7 @@ const Comments = () => {
             <button className="reply"><img src="./images/icon-reply.svg" alt=""/>Reply</button>
         }
       </section> {/* End of comment-main section */}
+      <AddReply />
       { comment.replies !== [] && <Replies items={comment.replies}/> }
     </div>
   ));
