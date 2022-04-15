@@ -1,5 +1,8 @@
+import { useDispatch } from "react-redux"
+import { upVote, downVote } from "../actions/actions"
+
 const CommentTemplate = props => {
-  
+  const dispatch = useDispatch()
   return (
     <section className='comment-template'>
       <section className="content">
@@ -15,9 +18,9 @@ const CommentTemplate = props => {
       </section>
       
       <div className="voting">
-        <button className='up-vote'><img src="./images/icon-plus.svg" alt="+"/></button>
+        <button className='up-vote' onClick={() => dispatch(upVote(props.items.id))}><img src="./images/icon-plus.svg" alt="+"/></button>
         <span className='vote-number'>{props.items.score}</span>
-        <button className='down-vote'><img src="./images/icon-minus.svg" alt="-"/></button>
+        <button className='down-vote' onClick={() => dispatch(downVote(props.items.id))}><img src="./images/icon-minus.svg" alt="-"/></button>
       </div>
       {
         props.items.user.username === props.currentUser.username ?
