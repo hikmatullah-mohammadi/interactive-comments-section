@@ -42,14 +42,14 @@ body {
     width: 90%;
     margin: 40px auto;
     .comments .comment {
-      .comment-main { // comment itself regardless its replies
+      .comment-template { // comment itself regardless its replies
         @include element-style();
         display: grid;
         grid-template-columns: 20% 80%;
         .content {
           grid-column: 1/3;
           margin-bottom: 10px;
-          padding: 10px;
+          padding: 5px;
           padding-bottom: 0;
           .avatar {
             width: 32px;
@@ -80,8 +80,8 @@ body {
           .btn-update-comment {
             @include button-style();
             color: white;
-            padding: 15px;
-            width: 25%;
+            padding: 15px 10px;
+            width: 30%;
             background-color: map-get($map: $primary-colors, $key: moderate-blue);
             margin-left: 75%;
           }
@@ -138,10 +138,9 @@ body {
       .comment-replies {
         border-left: solid 2px map-get($map: $primary-colors, $key: light-grayish-blue);
         .comment-reply {
-          .reply-main{
+          .comment-template{
             width: 95%;
             margin-left: 5%;
-            @extend .comment-main;
             .body .replying-to {
               color: map-get($map: $primary-colors, $key: moderate-blue);
               font-weight: 600;
@@ -163,11 +162,12 @@ body {
         z-index: 1;
         background-color: rgba(0, 0, 0, 0.445);
         inset: 0;
+        // display: grid;
+        place-items: center;
         display: none;
         div {
           @include element-style();
           width: 90%;
-          margin-top: 300px;
           .title {
             font-weight: 600;
             margin: 15px auto;
@@ -231,6 +231,21 @@ body {
   body {
     main {
       width: 80%;
+      .comments .comment .comment-template {
+        .content {
+          .btn-update-comment {
+            width: 20%;
+            margin-left: 80%;
+          }
+        }
+      }
+      .delete-alert {
+        .bg-alert {
+          div {
+            width: 400px;
+          }
+        }
+      }
     }
   }
 }
@@ -246,7 +261,7 @@ body {
     main {
       width: 60%;
       .comments .comment{
-        .comment-main {
+        .comment-template {
           grid-template-columns: 5% 50% 45%;
           column-gap: 10px;
           .voting {
@@ -307,14 +322,6 @@ body {
           grid-column: 3/4;
         }
       }
-
-      .delete-alert {
-        .bg-alert {
-          div {
-            width: 400px;
-          }
-        }
-      }
     }
   }
 }
@@ -322,10 +329,6 @@ body {
   body {
     main {
       width: 50%;
-      .delete-alert {
-        left: 32.5%;
-        width: 25%;
-      }
     }
   }
 }
