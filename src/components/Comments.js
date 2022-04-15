@@ -9,16 +9,17 @@ const Comments = () => {
   const dispatch = useDispatch()
   const comments = useSelector(state => state.commentReducer.comments)
   const currentUser = useSelector(state => state.commentReducer.currentUser)
-  
+  const replyToCommentId = useSelector(state => state.commentReducer.controls.replyToCommentId)
+
   useEffect(() => {
     dispatch(fetchAllComments())
   }, [dispatch])
   
-  const elements = comments.map((comment) => (
+  const elements = comments.map(comment => (
     <div className="comment" key={comment.id}> 
-      <CommentTemplate items={comment} currentUser={currentUser} />
-      <AddReply />
-      { comment.replies !== [] && <Replies items={comment.replies} currentUser={currentUser} /> }
+      <CommentTemplate item={comment} currentUser={currentUser} />
+      {replyToCommentId === comment.id && <AddReply comment={comment} />}
+      { comment.replies !== [] && <Replies items={comment.replies} currentUser={currentUser} parentId={comment.id}/> }
     </div>
   ));
   return (
