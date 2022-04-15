@@ -1,0 +1,7 @@
+export const FETCH_ALL_COMMENTS = 'FETCH_ALL_COMMENTS'
+export const ADD_NEW_COMMENT = 'ADD_NEW_COMMENT'
+export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const UPDATE_COMMENT = 'UPDATE_COMMENT'
+export const ADD_REPLY = 'ADD_REPLY'
+export const UP_VOTE = 'UP_VOTE'
+export const DOWN_VOTE = 'DOWN_VOTE'

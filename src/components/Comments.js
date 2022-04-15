@@ -1,19 +1,29 @@
-import data from "./../data";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllComments } from "../actions/actions";
 import AddReply from "./AddReply";
 import CommentTemplate from "./CommentTemplate";
 import Replies from "./Replies";
 
 const Comments = () => {
-  const comments = data.comments.map((comment) => (
+  const dispatch = useDispatch()
+  const comments = useSelector(state => state.commentReducer.comments)
+  const currentUser = useSelector(state => state.commentReducer.currentUser)
+  
+  useEffect(() => {
+    dispatch(fetchAllComments())
+  }, [dispatch])
+  
+  const elements = comments.map((comment) => (
     <div className="comment" key={comment.id}> 
-      <CommentTemplate items={comment}/>
+      <CommentTemplate items={comment} currentUser={currentUser} />
       <AddReply />
-      { comment.replies !== [] && <Replies items={comment.replies}/> }
+      { comment.replies !== [] && <Replies items={comment.replies} currentUser={currentUser} /> }
     </div>
   ));
   return (
     <div className="comments">
-      { comments }
+      { elements }
     </div>
   );
 };

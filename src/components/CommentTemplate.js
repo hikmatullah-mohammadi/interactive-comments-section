@@ -1,13 +1,14 @@
 const CommentTemplate = props => {
+  
   return (
     <section className='comment-template'>
       <section className="content">
         <img className="avatar" alt="" src={props.items.user.image.png}/>
         <span className="username">{props.items.user.username} {" "}
-          {props.items.user.username === 'juliusomo' && <span className='current-user-indicator'>you</span>}
+          {props.items.user.username === props.currentUser.username && <span className='current-user-indicator'>you</span>}
         </span>
         <span className="createdAt">{props.items.createdAt}</span>
-        <section className="body" contentEditable={true}>
+        <section className="body" contentEditable={false} onBlurCapture={() => alert("Hello")}>
           {props.items.content}
         </section>
         <button className='btn-update-comment'>Update</button>
@@ -19,7 +20,7 @@ const CommentTemplate = props => {
         <button className='down-vote'><img src="./images/icon-minus.svg" alt="-"/></button>
       </div>
       {
-        props.items.user.username === 'juliusomo' ?
+        props.items.user.username === props.currentUser.username ?
           <div className='edit-delete-comment'>
             <button className="btn-delete"><img src='./images/icon-delete.svg' alt=''/> Delete</button>
             <button className='btn-edit'><img src='./images/icon-edit.svg' alt=''/> Edit</button>

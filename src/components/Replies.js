@@ -1,11 +1,11 @@
 import AddReply from "./AddReply"
 import CommentTemplate from "./CommentTemplate"
 
-const Replies = (props) => {
+const Replies = props => {
   
   const replies = props.items.map(reply => (
     <div className='comment-reply' key={reply.id}>
-      <CommentTemplate items={reply}/>
+      <CommentTemplate items={reply} currentUser={props.currentUser}/>
       <AddReply />
     </div>
   )) 
