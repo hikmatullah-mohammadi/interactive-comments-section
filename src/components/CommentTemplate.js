@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { upVote, downVote, toggleReplyEntry } from "../actions/actions"
+import { useDispatch, useSelector } from "react-redux"
+import { upVote, downVote, toggleReplyEntry, toggleEditable, requestForDeletion } from "../actions/actions"
 
 const CommentTemplate = props => {
   const dispatch = useDispatch()
   const [voted, setVoted] = useState(false)
+  const editCommentId = useSelector(state => state.commentReducer.controls.editCommentId)
   const handleUpVote = () => {
     dispatch(upVote(props.item.id))
     setVoted(true)
@@ -15,6 +16,12 @@ const CommentTemplate = props => {
   }
   const handleReplyEntry = () => {
     dispatch(toggleReplyEntry(props.item.id))
+  }
+  const handleEditable = () => {
+    dispatch(toggleEditable(props.item.id))
+  }
+  const handleDelete = () => {
+    dispatch(requestForDeletion(props.item.id))
   }
   return (
     <section className='comment-template'>
@@ -28,7 +35,7 @@ const CommentTemplate = props => {
           {props.isReply && <span className='replying-to'>@{props.item.replyingTo} </span>}
           {props.item.content}
         </section>
-        <button className='btn-update-comment'>Update</button>
+        {editCommentId === props.item.id && <button className='btn-update-comment'>Update</button>}
       </section>
       
       <div className="voting">
@@ -43,8 +50,12 @@ const CommentTemplate = props => {
       {
         props.item.user.username === props.currentUser.username ?
           <div className='edit-delete-comment'>
-            <button className="btn-delete"><img src='./images/icon-delete.svg' alt=''/> Delete</button>
-            <button className='btn-edit'><img src='./images/icon-edit.svg' alt=''/> Edit</button>
+            <button className="btn-delete" onClick={handleDelete}>
+              <img src='./images/icon-delete.svg' alt=''/> Delete
+            </button>
+            <button className='btn-edit' onClick={handleEditable}>
+              <img src='./images/icon-edit.svg' alt=''/> Edit
+            </button>
           </div>
           :
           <button className="reply" onClick={handleReplyEntry}>

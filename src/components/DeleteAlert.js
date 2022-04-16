@@ -1,7 +1,18 @@
+import { useSelector, useDispatch } from "react-redux"
+import { deleteComment } from './../actions/actions'
+
 const DeleteAlert = () => {
+  const deleteCommentId = useSelector(state => state.commentReducer.controls.deleteCommentId)
+  const dispatch = useDispatch()
+  const handleCancel = () => {
+    dispatch(deleteComment(-1))
+  }
+  const handleYes = () => {
+    dispatch(deleteComment(deleteCommentId))
+  }
   return (
     <div className='delete-alert'>
-      <div className='bg-alert'>
+      <div className='bg-alert' style={{ display: deleteCommentId > -1 ? 'grid' : 'none'}}>
         <div>
           <section className='title'>
             Delete Comment
@@ -10,8 +21,8 @@ const DeleteAlert = () => {
             Are you sure you want to delete this comment? This will remove the comment and can't be undone.
           </section>
           <section className='response'>
-            <button>NO, CANCEL</button>
-            <button>YES, DELETE</button>
+            <button onClick={handleCancel}>NO, CANCEL</button>
+            <button onClick={handleYes}>YES, DELETE</button>
           </section>
         </div>
       </div>
