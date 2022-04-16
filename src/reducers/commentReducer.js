@@ -66,14 +66,14 @@ const commentReducer = (state=initialState, action) => {
     case actionTypes.DELETE_COMMENT:
       return {
         ...state,
-        comments: state.comments.filter(item => (
-          action.payload.id !== -1 &&
+        comments: action.payload.id !== -1 ?
+          state.comments.filter(item => (
           item.id !== action.payload.id)
           ).map(item => (
-            action.payload.id !== -1 ?
-            {...item, replies: item.replies.filter(item => item.id !== action.payload.id)} :
-            item
-          )),
+            {...item, replies: item.replies.filter(item => item.id !== action.payload.id)}
+          )) 
+          : 
+          state.comments,
         controls: {
           ...state.controls,
           deleteCommentId: -1
@@ -112,6 +112,18 @@ const commentReducer = (state=initialState, action) => {
           ...state.controls,
           editCommentId: state.controls.editCommentId === action.payload.id ? -1 : action.payload.id
         }
+      }
+    case actionTypes.UPDATE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.map(item => item.id === action.payload.id ?
+            {...item, content: action.payload.updatedComment} : 
+            {...item, replies: item.replies.map(item => item.id === action.payload.id ?
+              {...item, content: action.payload.updatedComment} :
+              item
+              )
+            }
+          )
       }
     default:
       return state

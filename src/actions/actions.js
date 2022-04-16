@@ -73,3 +73,8 @@ export const deleteComment = id => ({
   type: actionTypes.DELETE_COMMENT,
   payload: {id}
 })
+
+export const updateComment = (id, updatedComment) => ({
+  type: actionTypes.UPDATE_COMMENT,
+  payload: { id, updatedComment }
+})

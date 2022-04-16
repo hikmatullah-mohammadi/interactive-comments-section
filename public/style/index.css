@@ -66,6 +66,17 @@ body main .comments .comment .comment-template .content .body {
   margin-bottom: 10px;
 }
 
+body main .comments .comment .comment-template .content .body textarea {
+  width: 100%;
+  resize: none;
+  outline: none;
+  padding: 10px 25px;
+  font-size: 16px;
+  overflow-y: hidden;
+  color: #67727e;
+  border-radius: 10px;
+}
+
 body main .comments .comment .comment-template .content .btn-update-comment {
   border: none;
   padding: 10px;
@@ -242,7 +253,7 @@ body main .add-comment textarea, body main .comments .comment .add-reply textare
   width: 100%;
   resize: none;
   outline: none;
-  padding: 10px;
+  padding: 10px 25px;
   border-radius: 10px;
   border-color: #67727e;
   -ms-grid-column: 1;

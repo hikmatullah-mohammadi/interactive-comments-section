@@ -36,6 +36,7 @@ $neutral-colors : (
   font-size: 16px;
 }
 
+
 body {
   background-color: map-get($neutral-colors, light-gray);
   main {
@@ -75,7 +76,17 @@ body {
             margin-top: 20px;
             padding: 10px;
             color: map-get($neutral-colors, grayish-blue);
-            margin-bottom: 10px
+            margin-bottom: 10px;
+            textarea {
+              width: 100%;
+              resize: none;
+              outline: none;
+              padding: 10px 25px;
+              font-size: 16px;
+              overflow-y: hidden;
+              color: map-get($map: $neutral-colors, $key: grayish-blue);
+              border-radius: 10px;
+            } 
           }
           .btn-update-comment {
             @include button-style();
@@ -207,7 +218,7 @@ body {
         width: 100%;
         resize: none;
         outline: none;
-        padding: 10px;
+        padding: 10px 25px;
         border-radius: 10px;
         border-color: map-get($map: $neutral-colors, $key: grayish-blue);
         grid-column: 1/3;
