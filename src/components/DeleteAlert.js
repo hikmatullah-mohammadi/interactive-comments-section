@@ -16,16 +16,16 @@ const DeleteAlert = () => {
     <div className='delete-alert'>
       <div className='bg-alert' style={{ display: deleteCommentId > -1 ? 'grid' : 'none'}}>
         <div>
-          <section className='title'>
+          <div className='title'>
             Delete Comment
-          </section>
-          <section className='message'>
+          </div>
+          <div className='message'>
             Are you sure you want to delete this comment? This will remove the comment and can't be undone.
-          </section>
-          <section className='response'>
+          </div>
+          <div className='response'>
             <button onClick={handleCancel} >NO, CANCEL</button>
             <button onClick={handleYes}>YES, DELETE</button>
-          </section>
+          </div>
         </div>
       </div>
     </div>

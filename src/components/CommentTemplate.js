@@ -49,14 +49,14 @@ const CommentTemplate = props => {
     dispatch(actions.toggleEditable(props.item.id)) // close the editable entry
   }
   return (
-    <section className='comment-template'>
-      <section className="content">
+    <div className='comment-template'>
+      <div className="content">
         <img className="avatar" alt="" src={props.item.user.image.png}/>
         <span className="username">{props.item.user.username} {" "}
           {props.item.user.username === props.currentUser.username && <span className='current-user-indicator'>you</span>}
         </span>
         <span className="createdAt">{props.item.createdAtMsg}</span>
-        <section className="body" >
+        <div className="body" >
           {props.isReply && <span className='replying-to' contentEditable={false}>@{props.item.replyingTo} </span>}
           
           { editCommentId === props.item.id ?
@@ -74,8 +74,8 @@ const CommentTemplate = props => {
             : 
             props.item.content
           }
-        </section>
-      </section>
+        </div>
+      </div>
       
       <div className="voting" title="Vote">
         <button className='up-vote' onClick={handleUpVote} disabled={voted} title="You can only vote ONCE!">
@@ -101,7 +101,7 @@ const CommentTemplate = props => {
             <img src="./images/icon-reply.svg" alt=""/>Reply
           </button>
       }
-    </section>
+    </div>
   )
 }
 
