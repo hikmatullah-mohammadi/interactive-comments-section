@@ -25,7 +25,7 @@ const AddComment = () => {
       >
       </textarea>
       <img className='avatar' src={currentUser.image.png} alt=""/>
-      <button className='btn-send-comment' type='submit'>SEND</button>
+      <button className='btn-send-comment' type='submit' title="Click to send">SEND</button>
     </form>
   )
 }

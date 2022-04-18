@@ -28,7 +28,7 @@ const AddReply = props => {
       >
       </textarea>
       <img className='avatar' src={currentUser.image.png} alt=""/>
-      <button className='btn-send-reply' onClick={handleAddReply}>Reply</button>
+      <button className='btn-send-reply' onClick={handleAddReply} title="Click to send">Reply</button>
     </div>
   )
 }

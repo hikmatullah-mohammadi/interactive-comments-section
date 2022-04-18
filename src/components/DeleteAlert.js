@@ -23,7 +23,7 @@ const DeleteAlert = () => {
             Are you sure you want to delete this comment? This will remove the comment and can't be undone.
           </section>
           <section className='response'>
-            <button onClick={handleCancel}>NO, CANCEL</button>
+            <button onClick={handleCancel} >NO, CANCEL</button>
             <button onClick={handleYes}>YES, DELETE</button>
           </section>
         </div>

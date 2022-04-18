@@ -7,6 +7,10 @@
   font-family: Rubik;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 body {
   background-color: #eaecf1;
 }
@@ -61,31 +65,33 @@ body main .comments .comment .comment-template .content .createdAt {
 body main .comments .comment .comment-template .content .body {
   margin: 20px auto;
   color: #67727e;
-  margin-bottom: 10px;
 }
 
-body main .comments .comment .comment-template .content .body textarea {
+body main .comments .comment .comment-template .content .body form {
+  text-align: right;
+}
+
+body main .comments .comment .comment-template .content .body form textarea {
   width: 100%;
   resize: none;
   outline: none;
   padding: 10px 25px;
+  margin: 10px auto;
   font-size: 16px;
   overflow-y: hidden;
   color: #67727e;
   border-radius: 10px;
 }
 
-body main .comments .comment .comment-template .content .btn-update-comment {
+body main .comments .comment .comment-template .content .body form .btn-update-comment {
   border: none;
-  padding: 10px;
+  padding: 15px;
   font-weight: 700;
   border-radius: 10px;
   background-color: inherit;
+  width: 105px;
   color: white;
-  padding: 15px 10px;
-  width: 30%;
   background-color: #5457b6;
-  margin-left: 75%;
 }
 
 body main .comments .comment .comment-template .voting, body main .comments .comment .comment-template .reply {
@@ -113,13 +119,16 @@ body main .comments .comment .comment-template .voting .up-vote, body main .comm
 }
 
 body main .comments .comment .comment-template .voting .vote-number, body main .comments .comment .comment-template .reply .vote-number {
-  font-weight: 700;
   color: #5457b6;
+  font-weight: 700;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 body main .comments .comment .comment-template .reply {
   border: none;
-  padding: 10px;
+  padding: 15px;
   font-weight: 700;
   border-radius: 10px;
   background-color: inherit;
@@ -139,7 +148,7 @@ body main .comments .comment .comment-template .edit-delete-comment {
 
 body main .comments .comment .comment-template .edit-delete-comment .btn-delete, body main .comments .comment .comment-template .edit-delete-comment .btn-edit {
   border: none;
-  padding: 10px;
+  padding: 15px;
   font-weight: 700;
   border-radius: 10px;
   background-color: inherit;
@@ -188,6 +197,7 @@ body main .delete-alert .bg-alert div {
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
+  padding: 40px;
   width: 90%;
 }
 
@@ -216,11 +226,11 @@ body main .delete-alert .bg-alert div .response {
 
 body main .delete-alert .bg-alert div .response button {
   border: none;
-  padding: 10px;
+  padding: 15px;
   font-weight: 700;
   border-radius: 10px;
   background-color: inherit;
-  padding: 15px 20px;
+  width: 142px;
   color: white;
 }
 
@@ -268,11 +278,11 @@ body main .add-comment .avatar, body main .comments .comment .add-reply .avatar,
 
 body main .add-comment .btn-send-comment, body main .comments .comment .add-reply .btn-send-comment, body main .comments .comment .comment-replies .comment-reply .add-reply .btn-send-comment, body main .comments .comment .add-reply .btn-send-reply, body main .comments .comment .comment-replies .comment-reply .add-reply .btn-send-reply {
   border: none;
-  padding: 10px;
+  padding: 15px;
   font-weight: 700;
   border-radius: 10px;
   background-color: inherit;
-  padding: 15px 25px;
+  width: 105px;
   background-color: #5457b6;
   color: white;
 }
@@ -281,12 +291,11 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
   body main {
     width: 80%;
   }
-  body main .comments .comment .comment-template .content .btn-update-comment {
-    width: 20%;
-    margin-left: 80%;
-  }
   body main .delete-alert .bg-alert div {
     width: 400px;
+  }
+  body main .delete-alert .bg-alert div button {
+    width: 162px;
   }
 }
 
@@ -330,6 +339,10 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
     -ms-grid-column-span: 2;
     grid-area: 1/2/3/4;
   }
+  body main .comments .comment .comment-template .content .body {
+    padding-right: 20px;
+    margin-bottom: 0;
+  }
   body main .comments .comment .comment-template .reply {
     background-color: transparent;
     -ms-grid-row: 1;
@@ -344,6 +357,7 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: end;
+    margin-right: 15px;
   }
   body main .comments .comment .comment-template .reply img {
     padding-right: 5px;
@@ -361,6 +375,7 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: end;
+    margin-right: 20px;
   }
   body main .comments .comment .comment-template .edit-delete-comment .btn-edit, body main .comments .comment .comment-template .edit-delete-comment .btn-delete, body main .comments .comment .comment-template .edit-delete-comment .btn-edit {
     padding: 10px;
@@ -375,8 +390,8 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
   }
   body main .add-comment, body main .comments .comment .add-reply, body main .comments .comment .comment-replies .comment-reply .add-reply {
     margin-top: 20px;
-    -ms-grid-columns: 8% 72% 20%;
-        grid-template-columns: 8% 72% 20%;
+    -ms-grid-columns: 8% 67% 25%;
+        grid-template-columns: 8% 67% 25%;
     justify-items: center;
   }
   body main .add-comment textarea, body main .comments .comment .add-reply textarea, body main .comments .comment .comment-replies .comment-reply .add-reply textarea {

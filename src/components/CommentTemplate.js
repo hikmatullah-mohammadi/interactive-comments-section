@@ -60,24 +60,24 @@ const CommentTemplate = props => {
           {props.isReply && <span className='replying-to' contentEditable={false}>@{props.item.replyingTo} </span>}
           
           { editCommentId === props.item.id ?
-            <textarea 
-              value={editCommentId === props.item.id ? updatedComment : ''}
-              onChange={handleChangeTextarea}
-              ref={textarea}
-              onInput={handleInput}
-            >
-            </textarea>
+            <form onSubmit={handleUpdateComment}>
+              <textarea 
+                value={editCommentId === props.item.id ? updatedComment : ''}
+                onChange={handleChangeTextarea}
+                ref={textarea}
+                onInput={handleInput}
+                required
+              >
+              </textarea>
+              <button className='btn-update-comment' type='submit' title="Click to update">Update</button>
+            </form>
             : 
             props.item.content
           }
         </section>
-        {
-          editCommentId === props.item.id &&
-          <button className='btn-update-comment' onClick={handleUpdateComment}>Update</button>
-        }
       </section>
       
-      <div className="voting">
+      <div className="voting" title="Vote">
         <button className='up-vote' onClick={handleUpVote} disabled={voted} title="You can only vote ONCE!">
           <img src="./images/icon-plus.svg" alt="+"/>
         </button>
@@ -89,15 +89,15 @@ const CommentTemplate = props => {
       {
         props.item.user.username === props.currentUser.username ?
           <div className='edit-delete-comment'>
-            <button className="btn-delete" onClick={handleDelete}>
+            <button className="btn-delete" onClick={handleDelete} title="Click to delete">
               <img src='./images/icon-delete.svg' alt=''/> Delete
             </button>
-            <button className='btn-edit' onClick={handleEditable}>
+            <button className='btn-edit' onClick={handleEditable} title="Click to edit">
               <img src='./images/icon-edit.svg' alt=''/> Edit
             </button>
           </div>
           :
-          <button className="reply" onClick={handleReplyEntry}>
+          <button className="reply" onClick={handleReplyEntry} title="Click to toggle reply entry">
             <img src="./images/icon-reply.svg" alt=""/>Reply
           </button>
       }
