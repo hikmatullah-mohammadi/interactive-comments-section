@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import {  useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllComments } from "../actions/actions";
+import { fetchAllComments, updateCreatedAtMsg } from "../actions/actions";
 import AddReply from "./AddReply";
 import CommentTemplate from "./CommentTemplate";
 import Replies from "./Replies";
@@ -13,6 +13,7 @@ const Comments = () => {
 
   useEffect(() => {
     dispatch(fetchAllComments())
+    dispatch(updateCreatedAtMsg())
   }, [dispatch])
   
   const elements = comments.map(comment => (

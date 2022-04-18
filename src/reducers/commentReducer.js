@@ -1,4 +1,5 @@
 import * as actionTypes from './../actions/types'
+import { generateCreatedAtMsg } from './../myUtilityFunctions'
 
 const initialState = {
   currentUser: {
@@ -12,7 +13,14 @@ const initialState = {
     {
       id:'',
       content: '',
-      createdAt: '',
+      createdAt: {
+        y: '',
+        m: '',
+        d: '',
+        h: '',
+        min: '',
+      },
+      createdAtMsg: '',
       score: '',
       user: {
         image: {
@@ -124,6 +132,17 @@ const commentReducer = (state=initialState, action) => {
               )
             }
           )
+      }
+    case actionTypes.UPDATE_CREATED_AT_MSG:
+      return {
+        ...state,
+        comments: state.comments.map(item => (
+          {
+            ...item,
+            createdAtMsg: generateCreatedAtMsg(item.createdAt),
+            replies: item.replies.map(item => ({...item, createdAtMsg: generateCreatedAtMsg(item.createdAt)}))
+          }
+        ))
       }
     default:
       return state

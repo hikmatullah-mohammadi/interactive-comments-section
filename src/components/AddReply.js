@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addReply, toggleReplyEntry } from './../actions/actions'
+import { addReply, toggleReplyEntry, updateCreatedAtMsg } from './../actions/actions'
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -13,6 +13,7 @@ const AddReply = props => {
   const handleAddReply = () => {
     if (msg !== '') {
       dispatch(addReply(lastId+1, props.parentId, msg, props.comment))
+      dispatch(updateCreatedAtMsg())
       setMsg('')
       dispatch(toggleReplyEntry(props.comment.id))
     }

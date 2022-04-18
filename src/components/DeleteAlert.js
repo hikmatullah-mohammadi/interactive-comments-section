@@ -1,14 +1,16 @@
 import { useSelector, useDispatch } from "react-redux"
-import { deleteComment } from './../actions/actions'
+import { deleteComment, updateCreatedAtMsg } from './../actions/actions'
 
 const DeleteAlert = () => {
   const deleteCommentId = useSelector(state => state.commentReducer.controls.deleteCommentId)
   const dispatch = useDispatch()
   const handleCancel = () => {
     dispatch(deleteComment(-1))
+    dispatch(updateCreatedAtMsg())
   }
   const handleYes = () => {
     dispatch(deleteComment(deleteCommentId))
+    dispatch(updateCreatedAtMsg())
   }
   return (
     <div className='delete-alert'>

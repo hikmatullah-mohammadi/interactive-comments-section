@@ -1,5 +1,7 @@
 import * as actionTypes from './types'
+import { generateCreatedAt } from './../myUtilityFunctions'
 import data from './../data'
+
 
 export const fetchAllComments = () => ({
   type: actionTypes.FETCH_ALL_COMMENTS,
@@ -24,7 +26,8 @@ export const addReply = (id, parentId=-1, msg, comment) => dispatch => {
   const reply = {
     id: id,
     content: msg,
-    createdAt: "2 mintues ago",
+    createdAt: generateCreatedAt(),
+    createdAtMsg: 'now',
     score: 0,
     replyingTo: comment.user.username,
     user: {
@@ -44,16 +47,12 @@ export const addReply = (id, parentId=-1, msg, comment) => dispatch => {
   })
 }
 
-export const toggleEditable = id => ({
-  type: actionTypes.TOGGLE_EDITABLE,
-  payload: { id }
-})
-
 export const addComment = (id, msg, currentUser) => dispatch => {
   const newComment = {
     id,
     content: msg,
-    createdAt: "5 mintues ago",
+    createdAt: generateCreatedAt(),
+    createdAtMsg: 'now',
     score: 0,
     user: { ...currentUser },
     replies: []
@@ -74,7 +73,17 @@ export const deleteComment = id => ({
   payload: {id}
 })
 
+
+export const toggleEditable = id => ({
+  type: actionTypes.TOGGLE_EDITABLE,
+  payload: { id }
+})
 export const updateComment = (id, updatedComment) => ({
   type: actionTypes.UPDATE_COMMENT,
   payload: { id, updatedComment }
+})
+
+
+export const updateCreatedAtMsg = () => ({
+  type: actionTypes.UPDATE_CREATED_AT_MSG
 })

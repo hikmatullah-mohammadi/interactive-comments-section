@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addComment } from '../actions/actions'
+import { addComment, updateCreatedAtMsg } from '../actions/actions'
 
 const AddComment = () => {
   const currentUser = useSelector(state => state.commentReducer.currentUser)
@@ -11,6 +11,7 @@ const AddComment = () => {
   const handleSubmit = e => {
     e.preventDefault()
     dispatch(addComment(lastId+1, comment, currentUser))
+    dispatch(updateCreatedAtMsg())
     setComment('')
   }
   return (

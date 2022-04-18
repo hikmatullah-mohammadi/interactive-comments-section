@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { upVote, downVote, toggleReplyEntry, toggleEditable, requestForDeletion, updateComment } from "../actions/actions"
+import * as actions from './../actions/actions'
 
 const CommentTemplate = props => {
   const dispatch = useDispatch()
@@ -8,18 +8,22 @@ const CommentTemplate = props => {
   const editCommentId = useSelector(state => state.commentReducer.controls.editCommentId)
   const textarea = useRef()
   const handleUpVote = () => {
-    dispatch(upVote(props.item.id))
+    dispatch(actions.upVote(props.item.id))
+    dispatch(actions.updateCreatedAtMsg())
     setVoted(true)
   }
   const handleDownVote = () => {
-    dispatch(downVote(props.item.id))
+    dispatch(actions.downVote(props.item.id))
+    dispatch(actions.updateCreatedAtMsg())
     setVoted(true)
   }
   const handleReplyEntry = () => {
-    dispatch(toggleReplyEntry(props.item.id))
+    dispatch(actions.toggleReplyEntry(props.item.id))
+    dispatch(actions.updateCreatedAtMsg())
   }
   const handleEditable = () => {
-    dispatch(toggleEditable(props.item.id))
+    dispatch(actions.toggleEditable(props.item.id))
+    dispatch(actions.updateCreatedAtMsg())
     setTimeout(() => {
       try { // trigger input event to resize the textarea dynamically
         textarea.current.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}))
@@ -27,7 +31,8 @@ const CommentTemplate = props => {
     },1)
   }
   const handleDelete = () => {
-    dispatch(requestForDeletion(props.item.id))
+    dispatch(actions.requestForDeletion(props.item.id))
+    dispatch(actions.updateCreatedAtMsg())
   }
   const [updatedComment, setUpdatedComment] = useState(props.item.content)
   const handleChangeTextarea = e => {
@@ -39,8 +44,9 @@ const CommentTemplate = props => {
   }
 
   const handleUpdateComment = () => {
-    dispatch(updateComment(props.item.id, updatedComment))
-    dispatch(toggleEditable(props.item.id)) // close the editable entry
+    dispatch(actions.updateComment(props.item.id, updatedComment))
+    dispatch(actions.updateCreatedAtMsg())
+    dispatch(actions.toggleEditable(props.item.id)) // close the editable entry
   }
   return (
     <section className='comment-template'>
@@ -49,7 +55,7 @@ const CommentTemplate = props => {
         <span className="username">{props.item.user.username} {" "}
           {props.item.user.username === props.currentUser.username && <span className='current-user-indicator'>you</span>}
         </span>
-        <span className="createdAt">{props.item.createdAt}</span>
+        <span className="createdAt">{props.item.createdAtMsg}</span>
         <section className="body" >
           {props.isReply && <span className='replying-to' contentEditable={false}>@{props.item.replyingTo} </span>}
           
