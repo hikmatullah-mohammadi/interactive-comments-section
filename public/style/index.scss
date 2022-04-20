@@ -169,45 +169,45 @@ body {
       }
     }
     .delete-alert {
-      .bg-alert {
-        position: fixed;
-        z-index: 1;
-        background-color: rgba(0, 0, 0, 0.445);
-        inset: 0;
-        // display: grid;
-        place-items: center;
-        display: none;
-        div {
-          @include element-style();
-          padding: 40px;
-          width: 90%;
-          .title {
-            font-weight: 700;
-            margin: 15px auto;
-          }
-          .message {
-            color: map-get($map: $neutral-colors, $key: grayish-blue);
-            margin-bottom: 25px;
-          }
-          .response {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            button {
-              @include button-style();
-              width: 142px;
-              color: map-get($map: $neutral-colors, $key: white);
-              &:first-child {
-                background-color: map-get($map: $neutral-colors, $key: grayish-blue);
-              }
-              &:last-child {
-                background-color: map-get($map: $primary-colors, $key: soft-red);
-              }
+      position: fixed;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.719);
+      inset: 0;
+      // display: grid;
+      place-items: center;
+      display: none;
+      .alert {
+        @include element-style();
+        // padding: 40px;
+        width: 90%;
+        margin: auto;
+        .title {
+          font-weight: 700;
+          margin: 15px auto;
+        }
+        .message {
+          color: map-get($map: $neutral-colors, $key: grayish-blue);
+          margin-bottom: 25px;
+        }
+        .response {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          button {
+            @include button-style();
+            width: 48%;
+            color: map-get($map: $neutral-colors, $key: white);
+            &:first-child {
+              background-color: map-get($map: $neutral-colors, $key: grayish-blue);
+            }
+            &:last-child {
+              background-color: map-get($map: $primary-colors, $key: soft-red);
             }
           }
         }
       }
     }
+    
     .add-comment {
       @include element-style();
       display: grid;
@@ -245,12 +245,10 @@ body {
     main {
       width: 80%;
       .delete-alert {
-        .bg-alert {
-          div {
-            width: 400px;
-            button {
-              width: 162px;
-            }
+        .alert {
+          width: 400px;
+          button {
+            width: 162px;
           }
         }
       }
@@ -294,6 +292,7 @@ body {
             grid-area: 1/3/2/4;
             flex-direction: row;
             justify-content: end;
+            align-self: flex-end;
             margin-right: 15px;
             img {
               padding-right: 5px;
