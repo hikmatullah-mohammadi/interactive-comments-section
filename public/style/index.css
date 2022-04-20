@@ -183,35 +183,35 @@ body main .comments .comment .comment-replies .comment-reply .add-reply {
   margin-left: 5% !important;
 }
 
-body main .delete-alert .bg-alert {
+body main .delete-alert {
   position: fixed;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.445);
+  background-color: rgba(0, 0, 0, 0.719);
   inset: 0;
   place-items: center;
   display: none;
 }
 
-body main .delete-alert .bg-alert div {
+body main .delete-alert .alert {
   background-color: white;
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
-  padding: 40px;
   width: 90%;
+  margin: auto;
 }
 
-body main .delete-alert .bg-alert div .title {
+body main .delete-alert .alert .title {
   font-weight: 700;
   margin: 15px auto;
 }
 
-body main .delete-alert .bg-alert div .message {
+body main .delete-alert .alert .message {
   color: #67727e;
   margin-bottom: 25px;
 }
 
-body main .delete-alert .bg-alert div .response {
+body main .delete-alert .alert .response {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,21 +224,21 @@ body main .delete-alert .bg-alert div .response {
           justify-content: space-between;
 }
 
-body main .delete-alert .bg-alert div .response button {
+body main .delete-alert .alert .response button {
   border: none;
   padding: 15px;
   font-weight: 700;
   border-radius: 10px;
   background-color: inherit;
-  width: 142px;
+  width: 48%;
   color: white;
 }
 
-body main .delete-alert .bg-alert div .response button:first-child {
+body main .delete-alert .alert .response button:first-child {
   background-color: #67727e;
 }
 
-body main .delete-alert .bg-alert div .response button:last-child {
+body main .delete-alert .alert .response button:last-child {
   background-color: #ed6468;
 }
 
@@ -291,10 +291,10 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
   body main {
     width: 80%;
   }
-  body main .delete-alert .bg-alert div {
+  body main .delete-alert .alert {
     width: 400px;
   }
-  body main .delete-alert .bg-alert div button {
+  body main .delete-alert .alert button {
     width: 162px;
   }
 }
