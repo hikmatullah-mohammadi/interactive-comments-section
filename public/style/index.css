@@ -358,6 +358,8 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: end;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
     margin-right: 15px;
   }
   body main .comments .comment .comment-template .reply img {
