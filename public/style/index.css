@@ -8,7 +8,10 @@
 }
 
 button:hover {
+  opacity: 0.5;
   cursor: pointer;
+  -webkit-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
 }
 
 body {
@@ -138,6 +141,10 @@ body main .comments .comment .comment-template .reply {
   grid-column: 2/3;
   place-self: end;
   color: #5457b6;
+}
+
+body main .comments .comment .comment-template .reply img {
+  width: 15px;
 }
 
 body main .comments .comment .comment-template .edit-delete-comment {
@@ -361,9 +368,12 @@ body main .add-comment .btn-send-comment, body main .comments .comment .add-repl
     -ms-flex-item-align: end;
         align-self: flex-end;
     margin-right: 15px;
+    width: 80px;
+    height: 40px;
   }
   body main .comments .comment .comment-template .reply img {
     padding-right: 5px;
+    width: 20px;
   }
   body main .comments .comment .comment-template .edit-delete-comment {
     -ms-grid-row: 1;

@@ -10,7 +10,11 @@ const AddComment = () => {
   const [comment, setComment] = useState()
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch(addComment(lastId+1, comment, currentUser))
+    if (comment.trim() === '') {
+      setComment('')
+      return
+    }
+    dispatch(addComment(lastId+1, comment.trim(), currentUser))
     dispatch(updateCreatedAtMsg())
     setComment('')
   }
@@ -24,7 +28,7 @@ const AddComment = () => {
       onChange={e => setComment(e.target.value)}
       >
       </textarea>
-      <img className='avatar' src={currentUser.image.png} alt=""/>
+      <img className='avatar' src={currentUser.image.png} alt="avatar"/>
       <button className='btn-send-comment' type='submit' title="Click to send">SEND</button>
     </form>
   )

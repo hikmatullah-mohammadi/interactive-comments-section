@@ -11,11 +11,13 @@ const AddReply = props => {
   const currentUser = useSelector(state => state.commentReducer.currentUser)
 
   const handleAddReply = () => {
-    if (msg !== '') {
-      dispatch(addReply(lastId+1, props.parentId, msg, props.comment))
+    if (msg.trim() !== '') {
+      dispatch(addReply(lastId+1, props.parentId, msg.trim(), props.comment))
       dispatch(updateCreatedAtMsg())
       setMsg('')
       dispatch(toggleReplyEntry(props.comment.id))
+    } else {
+      setMsg('')
     }
   }
   
@@ -27,7 +29,7 @@ const AddReply = props => {
       value={msg}
       >
       </textarea>
-      <img className='avatar' src={currentUser.image.png} alt=""/>
+      <img className='avatar' src={currentUser.image.png} alt="avatar"/>
       <button className='btn-send-reply' onClick={handleAddReply} title="Click to send">Reply</button>
     </div>
   )

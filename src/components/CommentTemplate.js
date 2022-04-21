@@ -43,15 +43,20 @@ const CommentTemplate = props => {
     e.target.style.height = e.target.scrollHeight + 'px'
   }
 
-  const handleUpdateComment = () => {
-    dispatch(actions.updateComment(props.item.id, updatedComment))
+  const handleUpdateComment = e => {
+    e.preventDefault()
+    if (updatedComment.trim() === ''){
+      setUpdatedComment('')
+      return
+    }
+    dispatch(actions.updateComment(props.item.id, updatedComment.trim()))
     dispatch(actions.updateCreatedAtMsg())
     dispatch(actions.toggleEditable(props.item.id)) // close the editable entry
   }
   return (
     <div className='comment-template'>
       <div className="content">
-        <img className="avatar" alt="" src={props.item.user.image.png}/>
+        <img className="avatar" alt="avatar" src={props.item.user.image.png}/>
         <span className="username">{props.item.user.username} {" "}
           {props.item.user.username === props.currentUser.username && <span className='current-user-indicator'>you</span>}
         </span>

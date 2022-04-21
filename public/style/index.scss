@@ -36,7 +36,9 @@ $neutral-colors : (
 }
 
 button:hover {
+  opacity: 0.5;
   cursor: pointer;
+  transition: opacity 500ms ease-in-out;
 }
 
 body {
@@ -123,6 +125,9 @@ body {
           grid-column: 2/3;
           place-self: end;
           color: map-get($map: $primary-colors, $key: moderate-blue);
+          img {
+            width: 15px;
+          }
         }
         .edit-delete-comment {
           grid-column: 2/3;
@@ -295,8 +300,11 @@ body {
             justify-content: end;
             align-self: flex-end;
             margin-right: 15px;
+            width: 80px;
+            height: 40px;
             img {
               padding-right: 5px;
+              width: 20px;
             }
           }
           .edit-delete-comment {
