@@ -4,17 +4,20 @@ import CommentTemplate from "./CommentTemplate"
 
 
 const Replies = props => {
+
   const replyToCommentId = useSelector(state => state.commentReducer.controls.replyToCommentId)
   
-  const replies = props.items.map(reply => (
-    <div className='comment-reply' key={reply.id}>
-      <CommentTemplate item={reply} currentUser={props.currentUser} isReply={true}/>
-      {replyToCommentId === reply.id && <AddReply comment={reply} parentId={props.parentId}/>}
+  const comments = useSelector(state => state.commentReducer.comments)
+  const replies = comments.filter(item => props.items.indexOf(item.id) > -1)
+  const elements = replies.map(item => (
+    <div className='comment-reply' key={item.id}>
+      <CommentTemplate item={item} currentUser={props.currentUser} isReply={true}/>
+      {replyToCommentId === item.id && <AddReply comment={item} parentId={props.parentId}/>}
     </div>
   )) 
   return (
     <div className='comment-replies'>
-      { replies }
+      { elements }
     </div>
   )
 }

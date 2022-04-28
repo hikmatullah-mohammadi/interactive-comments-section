@@ -16,11 +16,12 @@ const Comments = () => {
     dispatch(updateCreatedAtMsg())
   }, [dispatch])
   
-  const elements = comments.map(comment => (
+  const elements = comments.filter(item => item.replies)
+  .map(comment => (
     <div className="comment" key={comment.id}> 
       <CommentTemplate item={comment} currentUser={currentUser} />
       {replyToCommentId === comment.id && <AddReply comment={comment} />}
-      { comment.replies !== [] && <Replies items={comment.replies} currentUser={currentUser} parentId={comment.id}/> }
+      { comment.replies && comment.replies !== [] && <Replies items={comment.replies} currentUser={currentUser} parentId={comment.id}/> }
     </div>
   ));
   return (

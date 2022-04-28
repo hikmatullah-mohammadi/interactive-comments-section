@@ -48,50 +48,49 @@ const data =
         },
         "username": "maxblagun"
       },
-      "replies": [
-        {
-          "id": 3,
-          "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
-          "createdAt": {
-            "y": '2022',
-            "m": '4',
-            "d": '2',
-            "h": '5',
-            "min": '50',
-          },
-          "createdAtMsg": '',
-          "score": 4,
-          "replyingTo": "maxblagun",
-          "user": {
-            "image": { 
-              "png": "./images/avatars/image-ramsesmiron.png",
-              "webp": "./images/avatars/image-ramsesmiron.webp"
-            },
-            "username": "ramsesmiron"
-          }
+      "replies": [3, 4]
+    },
+    {
+      "id": 3,
+      "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
+      "createdAt": {
+        "y": '2022',
+        "m": '4',
+        "d": '2',
+        "h": '5',
+        "min": '50',
+      },
+      "createdAtMsg": '',
+      "score": 4,
+      "replyingTo": "maxblagun",
+      "user": {
+        "image": { 
+          "png": "./images/avatars/image-ramsesmiron.png",
+          "webp": "./images/avatars/image-ramsesmiron.webp"
         },
-        {
-          "id": 4,
-          "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
-          "createdAt": {
-            "y": '2022',
-            "m": '4',
-            "d": '2',
-            "h": '6',
-            "min": '50',
-          },
-          "createdAtMsg": '',
-          "score": 2,
-          "replyingTo": "ramsesmiron",
-          "user": {
-            "image": { 
-              "png": "./images/avatars/image-juliusomo.png",
-              "webp": "./images/avatars/image-juliusomo.webp"
-            },
-            "username": "juliusomo"
-          }
-        }
-      ]
+        "username": "ramsesmiron"
+      }
+    },
+    {
+      "id": 4,
+      "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+      "createdAt": {
+        "y": '2022',
+        "m": '4',
+        "d": '2',
+        "h": '6',
+        "min": '50',
+      },
+      "createdAtMsg": '',
+      "score": 2,
+      "replyingTo": "ramsesmiron",
+      "user": {
+        "image": { 
+          "png": "./images/avatars/image-juliusomo.png",
+          "webp": "./images/avatars/image-juliusomo.webp"
+        },
+        "username": "juliusomo"
+      }
     }
   ]
 }

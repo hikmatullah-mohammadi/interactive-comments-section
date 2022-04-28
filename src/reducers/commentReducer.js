@@ -48,10 +48,16 @@ const commentReducer = (state=initialState, action) => {
       }
     case actionTypes.UP_VOTE:
       return {
-          ...state,
-          comments: state.comments.map(item => 
-            item.id === action.payload.id ? {...item, score: item.score + 1 } :
-            {...item, replies: item.replies.map(reply => reply.id === action.payload.id ? {...reply, score: reply.score + 1 } : reply)}
+        ...state,
+        comments: state.comments.map(item => 
+          item.id === action.payload.id ? {...item, score: item.score + 1 } : item
+          )
+      }
+    case actionTypes.DOWN_VOTE:
+      return {
+        ...state,
+        comments: state.comments.map(item => 
+          item.id === action.payload.id ? {...item, score: item.score - 1 } : item
           )
       }
     case actionTypes.ADD_COMMENT:
@@ -78,39 +84,36 @@ const commentReducer = (state=initialState, action) => {
           state.comments.filter(item => (
           item.id !== action.payload.id)
           ).map(item => (
-            {...item, replies: item.replies.filter(item => item.id !== action.payload.id)}
-          )) 
-          : 
-          state.comments,
-        controls: {
-          ...state.controls,
-          deleteCommentId: -1
-        }
-      }
-    case actionTypes.DOWN_VOTE:
-      return {
-        ...state,
-        comments: state.comments.map(item => 
-          item.id === action.payload.id ? {...item, score: item.score - 1 } : 
-            {...item, replies: item.replies.map(reply => reply.id === action.payload.id ? {...reply, score: reply.score - 1 } : reply)}
-        )
-    }
-    case actionTypes.ADD_REPLY:
-      return {
-        ...state,
-        comments: state.comments.map(item => item.id === action.payload.id ?
-          {...item, replies: [...item.replies, action.payload.reply] } : item),
-        controls: {
-          ...state.controls,
-          lastId: state.controls.lastId + 1
-        }
-      }
+            item.id === action.payload.id && item.replies ?
+            {...item, replies: item.replies.filter(item => item !== action.payload.id)} :
+            item
+            )) 
+            : 
+            state.comments,
+            controls: {
+              ...state.controls,
+              deleteCommentId: -1
+            }
+          }
     case actionTypes.TOGGLE_REPLY_ENTRY:
       return {
         ...state,
         controls: {
           ...state.controls,
           replyToCommentId: state.controls.replyToCommentId === action.payload.id ? -1 : action.payload.id
+        }
+      }
+    case actionTypes.ADD_REPLY:
+      return {
+        ...state,
+        comments: [
+          ...state.comments.map(item => item.id === action.payload.id ?
+            {...item, replies: [...item.replies, action.payload.reply.id] } : item),
+            action.payload.reply
+        ],
+        controls: {
+          ...state.controls,
+          lastId: state.controls.lastId + 1
         }
       }
     case actionTypes.TOGGLE_EDITABLE:
@@ -125,13 +128,7 @@ const commentReducer = (state=initialState, action) => {
       return {
         ...state,
         comments: state.comments.map(item => item.id === action.payload.id ?
-            {...item, content: action.payload.updatedComment} : 
-            {...item, replies: item.replies.map(item => item.id === action.payload.id ?
-              {...item, content: action.payload.updatedComment} :
-              item
-              )
-            }
-          )
+          {...item, content: action.payload.updatedComment} : item) 
       }
     case actionTypes.UPDATE_CREATED_AT_MSG:
       return {
@@ -139,8 +136,7 @@ const commentReducer = (state=initialState, action) => {
         comments: state.comments.map(item => (
           {
             ...item,
-            createdAtMsg: generateCreatedAtMsg(item.createdAt),
-            replies: item.replies.map(item => ({...item, createdAtMsg: generateCreatedAtMsg(item.createdAt)}))
+            createdAtMsg: generateCreatedAtMsg(item.createdAt)
           }
         ))
       }
